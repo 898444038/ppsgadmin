@@ -7,6 +7,7 @@ import router from './router'
 import axios from 'axios'
 
 import ElementUI from 'element-ui'
+import store from './vuex/index'
 
 import api from './api/index'
 Vue.use(ElementUI)
@@ -23,6 +24,7 @@ Vue.prototype.$axios = axios
 new Vue({
   el: '#root',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -14,7 +14,14 @@ export default new Router({
     {
       path: '/index',
       name: 'index',
-      component: () => import('@/views/index')
+      component: () => import('@/views/index/index'),
+      children: [
+        {
+          path: '/config/base',
+          name: 'config',
+          component: () => import('@/views/config/baseConfig')
+        },
+      ]
     }
   ]
 })

@@ -110,36 +110,108 @@
                 <a href="/login" class="btn btn-theme btn--icon"><i class="zwicon-checkmark"></i></a>
             </div>
         </div>
+        <remote-js src="../../../static/formwork/vendors/popper.js/popper.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/bootstrap/js/bootstrap.min.js"></remote-js>
+        <!-- <remote-js src="../../../static/formwork/js/app.min.js"></remote-js>  -->
     </div>
 </template>
 
 <script>
-
-
+import $ from 'jquery'
 export default {
-  data () {
-    return {}
-  },
+    components: {
+        'remote-js': {
+            render(createElement) {
+                return createElement('script', {attrs: {type: 'text/javascript', src: this.src}});
+            },
+            props: {
+                src: { type: String, required: true}
+            }
+        }
+    },
+    data () {
+        return {}
+    },
+    beforeCreate: function() {
+        console.group('------beforeCreate创建前状态------');
+        console.log("%c%s", "color:red" , "el     : " + this.$el); //undefined
+        console.log("%c%s", "color:red","data   : " + this.$data); //undefined 
+        console.log("%c%s", "color:red","message: " + this.message) 
+    },
+    created: function() {
+        console.group('------created创建完毕状态------');
+        console.log("%c%s", "color:red","el     : " + this.$el); //undefined
+        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化 
+        console.log("%c%s", "color:red","message: " + this.message); //已被初始化
+    },
+    beforeMount: function() {
+        console.group('------beforeMount挂载前状态------');
+        console.log("%c%s", "color:red","el     : " + (this.$el)); //已被初始化
+        console.log(this.$el);
+        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化  
+        console.log("%c%s", "color:red","message: " + this.message); //已被初始化  
+    },
+    mounted: function() {
+        console.group('------mounted 挂载结束状态------');
+        console.log("%c%s", "color:red","el     : " + this.$el); //已被初始化
+        console.log(this.$el);    
+        console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
+        console.log("%c%s", "color:red","message: " + this.message); //已被初始化 
+
+        let s = document.createElement("script")
+        s.type = 'text/javascript'
+        s.src = '../../../static/formwork/js/app.min.js'
+        document.body.appendChild(s)
+
+    },
+    beforeUpdate: function () {
+        console.group('beforeUpdate 更新前状态===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el);   
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    updated: function () {
+        console.group('updated 更新完成状态===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el); 
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    beforeDestroy: function () {
+        console.group('beforeDestroy 销毁前状态===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el);    
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    destroyed: function () {
+        console.group('destroyed 销毁完成状态===============》');
+        console.log("%c%s", "color:red","el     : " + this.$el);
+        console.log(this.$el);  
+        console.log("%c%s", "color:red","data   : " + this.$data); 
+        console.log("%c%s", "color:red","message: " + this.message)
+    },
   methods: {
     loginSubmit: function () {
-      this.$ajax.get('/call', {token: '1213213'})
-      //this.$ajax.postForm('auth/login', {username: 'wang', password: '123456'})
-    //   this.$axios.get('/api/auth/login',{
-    //     params:{            
-    //         name:this.name,     //上传参数到服务器
-    //         id:this.id
-    //     }
-    //   }).then(res => {
-    //     var a =res.data.code;
-    //     console.log(a);             //从服务器取得数据res，这里我们需要data里面的code
-    //   })
-      
-      // this.$router.push({path: '/index'})
+    //   this.$ajax.post('/ppsg-client/auth/getToken', {username: "superadmin",password:"123456"})
+    //   this.$ajax.post('/ppsg-client/admin/list', {token: "dwadwad"})
+      this.$ajax.post('/ppsg-admin/admin/login', {account: "admin",password:"123456"}).then(res => {
+          var data =res;
+          if(res.code == 200){
+            data.data.user.token = data.data.token;
+            this.$store.dispatch("setUserInfo", data.data.user);
+            this.$router.push({path: '/index'})
+          }
+      });
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
+@import '../../../static/formwork/vendors/zwicon/zwicon.min.css';
+@import '../../../static/formwork/vendors/animate.css/animate.min.css';
+@import '../../../static/formwork/css/app.min.css';
 
 </style>

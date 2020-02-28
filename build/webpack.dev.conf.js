@@ -91,7 +91,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new webpack.ProvidePlugin({
+      $:'jquery',
+      jQuery:'jquery'
+    })
   ]
 })
 

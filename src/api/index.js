@@ -8,7 +8,7 @@ let source = axios.CancelToken.source()
 // 创建axios实例
 const instance = axios.create({
   // baseURL: process.env.API_HOST, // api的base_url
-  baseURL: 'http://localhost:8541/feign',
+  baseURL: 'http://localhost:8080/',
   withCredentials: true,
   timeout: 10000, // 请求超时时间
   // headers: {
