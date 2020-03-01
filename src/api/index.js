@@ -2,6 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 import Vue from 'vue'
 import router from '../router/index'
+import store from '../vuex/index'
 
 let source = axios.CancelToken.source()
 
@@ -33,8 +34,8 @@ let req = instance.interceptors.request.use(function (config) {
     // 让每个请求携带token
     //config.headers['Access-Control-Allow-Origin'] = '*'
     //config.headers['Access-Control-Allow-Method'] = 'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-
-    config.headers['Authorization'] = JSON.parse(sessionStorage.getItem('token'))
+    
+    config.headers['Authorization'] = store.state.user.token //JSON.parse(sessionStorage.getItem('token'))
   }
   return config
 }, function (error) {

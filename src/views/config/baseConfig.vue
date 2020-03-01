@@ -2,7 +2,9 @@
     <section class="content">
         <div class="content__inner">
             <header class="content__title">
-                <h1>Tabs <small>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</small></h1>
+                <h1>配置 
+                    <!-- <small>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</small> -->
+                </h1>
                 <div class="actions">
                     <a href="#" class="actions__item zwicon-cog"></a>
                     <a href="#" class="actions__item zwicon-refresh-double"></a>
@@ -19,37 +21,49 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Basic example</h4>
-                    <h6 class="card-subtitle">Basic example with static contents.</h6>
+                    <h4 class="card-title">基本配置</h4>
+                    <!-- <h6 class="card-subtitle">Basic example with static contents.</h6> -->
 
                     <div class="tab-container">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
+                                <a class="nav-link active" data-toggle="tab" href="#country" role="tab" @click="country">国家配置</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
+                                <a class="nav-link" data-toggle="tab" href="#star" role="tab" @click="star">星级配置</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Messages</a>
+                                <a class="nav-link" data-toggle="tab" href="#combat" role="tab" @click="combat">战力配置</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
+                                <a class="nav-link" data-toggle="tab" href="#generalsType" role="tab" @click="generalsType">武将类型配置</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#science" role="tab" @click="science">科技配置</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#dict" role="tab" @click="dict">数据字典</a>
                             </li>
                         </ul>
 
                         <div class="tab-content">
-                            <div class="tab-pane active fade show" id="home" role="tabpanel">
-                                <DataTable :data='data1'></DataTable>
+                            <div class="tab-pane active fade show" id="country" role="tabpanel">
+                                <DataTable :data='data1' :key="key1"></DataTable>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel">
-                                <DataTable :data='data2'></DataTable>
+                            <div class="tab-pane fade" id="star" role="tabpanel">
+                                <DataTable :data='data2' :key="key2"></DataTable>
                             </div>
-                            <div class="tab-pane fade" id="messages" role="tabpanel">
-                                <p>Etiam rhoncus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Cras id dui. Curabitur turpis. Etiam ut purus mattis mauris sodales aliquam. Aenean viverra rhoncus pede. Nulla sit amet est. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Praesent ac sem eget est egestas volutpat. Cras varius. Morbi mollis tellus ac sapien. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Fusce vel dui.Morbi mattis ullamcorper velit. Etiam rhoncus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Cras id dui. Curabitur turpis. Etiam ut purus mattis mauris sodales aliquam. Aenean viverra rhoncus pede. Nulla sit amet est. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Praesent ac sem eget est egestas volutpat. Cras varius. Morbi mollis tellus ac sapien. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Fusce vel dui.</p>
+                            <div class="tab-pane fade" id="combat" role="tabpanel">
+                                <DataTable :data='data3' :key="key3"></DataTable>
                             </div>
-                            <div class="tab-pane fade" id="settings" role="tabpanel">
-                                <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum.</p>
+                            <div class="tab-pane fade" id="generalsType" role="tabpanel">
+                                <DataTable :data='data4' :key="key4"></DataTable>
+                            </div>
+                            <div class="tab-pane fade" id="science" role="tabpanel">
+                                <DataTable :data='scienceData' :key="scienceKey"></DataTable>
+                            </div>
+                            <div class="tab-pane fade" id="dict" role="tabpanel">
+                                <DataTable :data='dictData' :key="dictKey"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -76,37 +90,128 @@ export default {
     },
     data() {
         return {
+            key1:0,
             data1:{
                 title:[
                     {key:'id',name:'序号'},
                     {key:'name',name:'名称'}
                 ],
-                list:[
-                    {id:1,name:"name1"},
-                    {id:2,name:"name2"},
-                    {id:3,name:"name3"},
-                    {id:4,name:"name4"},
-                    {id:5,name:"name5"},
-                ]
+                list:[]
             },
+            key2:0,
             data2:{
                 title:[
                     {key:'id',name:'序号'},
+                    {key:'code',name:'级别'},
                     {key:'name',name:'名称'}
                 ],
-                list:[
-                    {id:1,name:"name1"},
-                    {id:2,name:"name2"},
-                ]
+                list:[]
+            },
+            key3:0,
+            data3:{
+                title:[
+                    {key:'id',name:'序号'},
+                    {key:'name',name:'名称'},
+                    {key:'combat',name:'战力值'},
+                ],
+                list:[]
+            },
+            key4:0,
+            data4:{
+                title:[
+                    {key:'id',name:'序号'},
+                    {key:'name',name:'名称'},
+                    {key:'forceGrowth',name:'武力每级成长'},
+                    {key:'intellectGrowth',name:'智力每级成长'},
+                    {key:'troopsGrowth',name:'兵力每级成长'},
+                ],
+                list:[]
+            },
+            scienceKey:0,
+            scienceData:{
+                title:[
+                    {key:'id',name:'序号'},
+                    {key:'level',name:'级别'},
+                    {key:'code',name:'编码'},
+                    {key:'name',name:'名称'},
+                    {key:'forceRate',name:'武力加成百分比'},
+                    {key:'intellectRate',name:'智力加成百分比'},
+                    {key:'troopsRate',name:'兵力加成百分比'},
+                    {key:'selfHurtDesc',name:'自身兵种伤害加成'},
+                    {key:'restraintHurtDesc',name:'针对兵种伤害加成'},
+                ],
+                list:[]
+            },
+            dictKey:0,
+            dictData:{
+                title:[
+                    {key:'id',name:'序号'},
+                    {key:'code',name:'编码'},
+                    {key:'name',name:'名称'},
+                ],
+                list:[]
             },
         }
     },
     // 挂载结束状态
     mounted: function() {
-        
+        this.country();
     },
     methods:{
-        
+        country(){
+            this.$ajax.post(this.$request.config.country.select, {}).then(res => {
+                var data =res;
+                if(res.code == 200){
+                    ++this.key1;
+                    this.data1.list = res.data;
+                }
+            });
+        },
+        star(){
+            this.$ajax.post(this.$request.config.star.select, {}).then(res => {
+                var data =res;
+                if(res.code == 200){
+                    ++this.key2;
+                    this.data2.list = res.data;
+                }
+            });
+        },
+        combat(){
+            this.$ajax.post(this.$request.config.combat.select, {}).then(res => {
+                var data =res;
+                if(res.code == 200){
+                    ++this.key3;
+                    this.data3.list = res.data;
+                }
+            });
+        },
+        generalsType(){
+            this.$ajax.post(this.$request.config.generalsType.select, {}).then(res => {
+                var data =res;
+                if(res.code == 200){
+                    ++this.key4;
+                    this.data4.list = res.data;
+                }
+            });
+        },
+        science(){
+            this.$ajax.post(this.$request.config.science.select, {}).then(res => {
+                var data =res;
+                if(res.code == 200){
+                    ++this.scienceKey;
+                    this.scienceData.list = res.data;
+                }
+            });
+        },
+        dict(){
+            this.$ajax.post(this.$request.config.dict.select, {}).then(res => {
+                var data =res;
+                if(res.code == 200){
+                    ++this.dictKey;
+                    this.dictData.list = res.data;
+                }
+            });
+        }
     }
 }
 </script>

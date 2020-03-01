@@ -35,7 +35,7 @@
             </div> -->
         </div>
         <table class="table dataTable no-footer table-hover" role="grid" aria-describedby="data-table_info">
-            <thead>
+            <thead class="thead-light">
                 <tr role="row">
                     <!-- <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Name</th>
                     <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Position</th>
@@ -49,7 +49,7 @@
             </thead>
             <tbody>
                 <tr v-for="(item,index) in list" :key="index" role="row">
-                    <td v-for="(item2,index2) in item" :key="index2" class="sorting_1">{{item2}}</td>
+                    <td v-for="(item2,propkey2,index2) in item" :key="index2" v-if="checkColumn(propkey2)" class="sorting_1">{{item2}}</td>
                 </tr>
                 <!-- <tr role="row" class="even">
                     <td class="sorting_1">Sonya Frost</td>
@@ -64,14 +64,14 @@
         <div class="dataTables__bottom">
             <!-- <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 46 to 57 of 57 entries</div> -->
             <div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate">
-                <a class="paginate_button previous" :class="{ disabled: currentPage==1 }" aria-controls="data-table" data-dt-idx="0" tabindex="0" id="data-table_previous" @click="prevPage()">Previous</a>
-                <span>
+                <a class="paginate_button previous no-select" :class="{ disabled: currentPage==1 }" aria-controls="data-table" data-dt-idx="0" tabindex="0" id="data-table_previous" @click="prevPage()">Previous</a>
+                <span class="no-select">
                     <!-- <a class="paginate_button current" aria-controls="data-table" data-dt-idx="1" tabindex="0">1</a>
                     <a class="paginate_button " aria-controls="data-table" data-dt-idx="2" tabindex="0">2</a>
                     <a class="paginate_button " aria-controls="data-table" data-dt-idx="3" tabindex="0">3</a> -->
                     <a v-for="index of page" :key="index" class="paginate_button" :class="{ current: index==currentPage }" @click="toPage(index)" aria-controls="data-table" data-dt-idx="4" tabindex="0">{{index}}</a>
                 </span>
-                <a class="paginate_button next" :class="{ disabled: currentPage==page }" aria-controls="data-table" data-dt-idx="5" tabindex="0" id="data-table_next" @click="nextPage()">Next</a>
+                <a class="paginate_button next no-select" :class="{ disabled: currentPage==page }" aria-controls="data-table" data-dt-idx="5" tabindex="0" id="data-table_next" @click="nextPage()">Next</a>
                 </div>
             </div>
             <div class="clear"></div>
@@ -184,10 +184,27 @@ export default {
                 this.list  = this.totalList.slice(startIndex,endIndex);
             }
         },
+        checkColumn(propkey2){
+            var titles = this.title;
+            for(var i=0;i<titles.length;i++){
+                if(titles[i].key == propkey2){
+                    return true;
+                }
+            }
+            return false;
+        },
     }
 }
 </script>
 
 <style scoped>
-
+.no-select{
+    /* moz-user-select: -moz-none; */
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 </style>

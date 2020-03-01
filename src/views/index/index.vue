@@ -188,6 +188,7 @@
             </transition>
 
         </main>
+        <remote-js src="../../../static/formwork/vendors/jquery/jquery.min.js"></remote-js>
         <remote-js src="../../../static/formwork/vendors/popper.js/popper.min.js"></remote-js>
         <remote-js src="../../../static/formwork/vendors/bootstrap/js/bootstrap.min.js"></remote-js>
         <remote-js src="../../../static/formwork/vendors/overlay-scrollbars/jquery.overlayScrollbars.min.js"></remote-js>
@@ -198,7 +199,19 @@
         <remote-js src="../../../static/formwork/vendors/jszip/jszip.min.js"></remote-js>
         <remote-js src="../../../static/formwork/vendors/datatables/datatables-buttons/buttons.html5.min.js"></remote-js> -->
 
-        <!-- <remote-js src="../../../static/formwork/js/app.min.js"></remote-js> -->
+        <remote-js src="../../../static/formwork/vendors/jquery-mask-plugin/jquery.mask.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/select2/js/select2.full.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/dropzone/dropzone.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/flatpickr/flatpickr.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/nouislider/nouislider.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/trumbowyg/trumbowyg.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/rateyo/jquery.rateyo.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/jquery-text-counter/textcounter.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/autosize/autosize.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/sweetalert2/sweetalert2.all.min.js"></remote-js>
+
+        <remote-js src="../../../static/formwork/js/app.min.js"></remote-js>
     </div>
 </template>
 
@@ -238,7 +251,8 @@ export default {
                     pid:0,
                     icon:'zwicon-shape-circle',
                     children:[
-                        {id:2001,name:'虚战力查询',pid:2000,path:''},
+                        {id:2001,name:'虚战力查询',pid:2000,path:'/xucombat/queryCombat'},
+                        {id:2002,name:'战力模拟器',pid:2000,path:'/xucombat/queryCombat'},
                     ]
                 },
             ]
@@ -263,10 +277,10 @@ export default {
             $(".page-loader").fadeOut()
         },500)
 
-        let s = document.createElement("script")
-        s.type = 'text/javascript'
-        s.src = '../../../static/formwork/js/app.min.js'
-        document.body.appendChild(s)
+        // let s = document.createElement("script")
+        // s.type = 'text/javascript'
+        // s.src = '../../../static/formwork/js/app.min.js'
+        // document.body.appendChild(s)
     },
     // 更新前状态
     beforeUpdate: function () {
@@ -305,6 +319,15 @@ export default {
     @import '../../../static/formwork/vendors/overlay-scrollbars/OverlayScrollbars.min.css';
     @import '../../../static/formwork/vendors/fullcalendar/core/main.min.css';
     @import '../../../static/formwork/vendors/fullcalendar/daygrid/main.min.css';
+
+    @import '../../../static/formwork/vendors/select2/css/select2.min.css';
+    @import '../../../static/formwork/vendors/dropzone/dropzone.css';
+    @import '../../../static/formwork/vendors/flatpickr/flatpickr.min.css';
+    @import '../../../static/formwork/vendors/nouislider/nouislider.min.css';
+    @import '../../../static/formwork/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.css';
+    @import '../../../static/formwork/vendors/trumbowyg/ui/trumbowyg.min.css';
+    @import '../../../static/formwork/vendors/rateyo/jquery.rateyo.min.css';
+
     @import '../../../static/formwork/css/app.min.css';
 </style>
 

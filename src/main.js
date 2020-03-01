@@ -10,10 +10,12 @@ import ElementUI from 'element-ui'
 import store from './vuex/index'
 
 import api from './api/index'
+import request from './api/api'
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 Vue.prototype.$ajax = api
+Vue.prototype.$request = request
 Vue.prototype.$axios = axios
 
 /* eslint-disable no-new */

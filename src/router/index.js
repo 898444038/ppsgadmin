@@ -21,6 +21,11 @@ export default new Router({
           name: 'config',
           component: () => import('@/views/config/baseConfig')
         },
+        {
+          path: '/xucombat/queryCombat',
+          name: 'config',
+          component: () => import('@/views//xucombat/queryCombat')
+        },
       ]
     }
   ]

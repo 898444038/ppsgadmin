@@ -110,8 +110,8 @@
                 <a href="/login" class="btn btn-theme btn--icon"><i class="zwicon-checkmark"></i></a>
             </div>
         </div>
-        <remote-js src="../../../static/formwork/vendors/popper.js/popper.min.js"></remote-js>
-        <remote-js src="../../../static/formwork/vendors/bootstrap/js/bootstrap.min.js"></remote-js>
+        <!-- <remote-js src="../../../static/formwork/vendors/popper.js/popper.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/bootstrap/js/bootstrap.min.js"></remote-js> -->
         <!-- <remote-js src="../../../static/formwork/js/app.min.js"></remote-js>  -->
     </div>
 </template>
@@ -158,10 +158,10 @@ export default {
         console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
         console.log("%c%s", "color:red","message: " + this.message); //已被初始化 
 
-        let s = document.createElement("script")
-        s.type = 'text/javascript'
-        s.src = '../../../static/formwork/js/app.min.js'
-        document.body.appendChild(s)
+        // let s = document.createElement("script")
+        // s.type = 'text/javascript'
+        // s.src = '../../../static/formwork/js/app.min.js'
+        // document.body.appendChild(s)
 
     },
     beforeUpdate: function () {
@@ -196,14 +196,15 @@ export default {
     loginSubmit: function () {
     //   this.$ajax.post('/ppsg-client/auth/getToken', {username: "superadmin",password:"123456"})
     //   this.$ajax.post('/ppsg-client/admin/list', {token: "dwadwad"})
-      this.$ajax.post('/ppsg-admin/admin/login', {account: "admin",password:"123456"}).then(res => {
-          var data =res;
-          if(res.code == 200){
-            data.data.user.token = data.data.token;
-            this.$store.dispatch("setUserInfo", data.data.user);
-            this.$router.push({path: '/index'})
-          }
-      });
+        var self = this;
+        this.$ajax.post('/ppsg-admin/admin/login', {account: "admin",password:"123456"}).then(res => {
+            var data =res;
+            if(res.code == 200){
+                data.data.user.token = data.data.token;
+                this.$store.dispatch("setUserInfo", data.data.user);
+                this.$router.push({path: '/index'})
+            }
+        });
     }
   }
 }
