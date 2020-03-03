@@ -38,6 +38,9 @@ const API = {
       delete:'/ppsg-admin/ppsg/config/dict/delete',
     }
   },
+  xzl:{
+    select:'/ppsg-admin/ppsg/xzl/custom/exportExcel'
+  }
 }
 
 export default API

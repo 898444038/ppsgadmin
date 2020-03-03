@@ -242,7 +242,7 @@ export default {
                     icon:'zwicon-cog',
                     children:[
                         {id:1001,name:'基本配置',pid:1000,path:'/config/base'},
-                        {id:1002,name:'科技配置',pid:1000,path:''},
+                        // {id:1002,name:'科技配置',pid:1000,path:''},
                     ]
                 },
                 {
@@ -252,7 +252,7 @@ export default {
                     icon:'zwicon-shape-circle',
                     children:[
                         {id:2001,name:'虚战力查询',pid:2000,path:'/xucombat/queryCombat'},
-                        {id:2002,name:'战力模拟器',pid:2000,path:'/xucombat/queryCombat'},
+                        {id:2002,name:'战力模拟器',pid:2000,path:'/xucombat/imitate'},
                     ]
                 },
             ]

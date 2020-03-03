@@ -26,6 +26,11 @@ export default new Router({
           name: 'config',
           component: () => import('@/views//xucombat/queryCombat')
         },
+        {
+          path: '/xucombat/imitate',
+          name: 'config',
+          component: () => import('@/views//xucombat/imitate')
+        },
       ]
     }
   ]

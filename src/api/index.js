@@ -11,7 +11,7 @@ const instance = axios.create({
   // baseURL: process.env.API_HOST, // api的base_url
   baseURL: 'http://localhost:8080/',
   withCredentials: true,
-  timeout: 10000, // 请求超时时间
+  timeout: 1000000, // 请求超时时间
   // headers: {
   //   'Content-Type': 'application/json',
   //   'Access-Control-Allow-Origin': '*'
@@ -72,6 +72,17 @@ let res = instance.interceptors.response.use(function (response) {
 
 // 取消响应拦截器
 // instance.interceptors.response.eject(res)
+
+// post 导出请求
+const postExport = function (url, params) {
+  return new Promise((resolve, reject) => {
+    instance.post(url, qs.stringify(params),{responseType: 'arraybuffer'}).then(res => {
+      resolve(res)
+    }).catch(error => {
+      reject(error)
+    })
+  })
+}
 
 // post：表单+文件上传
 const post = function (url, params) {
