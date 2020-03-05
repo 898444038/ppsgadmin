@@ -211,6 +211,10 @@
         <remote-js src="../../../static/formwork/vendors/autosize/autosize.min.js"></remote-js>
         <remote-js src="../../../static/formwork/vendors/sweetalert2/sweetalert2.all.min.js"></remote-js>
 
+        <remote-js src="../../../static/formwork/vendors/fullcalendar/core/main.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/fullcalendar/daygrid/main.min.js"></remote-js>
+        <remote-js src="../../../static/formwork/vendors/fullcalendar/interaction/main.min.js"></remote-js>
+
         <remote-js src="../../../static/formwork/js/app.min.js"></remote-js>
     </div>
 </template>
@@ -242,7 +246,7 @@ export default {
                     icon:'zwicon-cog',
                     children:[
                         {id:1001,name:'基本配置',pid:1000,path:'/config/base'},
-                        // {id:1002,name:'科技配置',pid:1000,path:''},
+                        {id:1002,name:'武将配置',pid:1000,path:'/config/generals'},
                     ]
                 },
                 {
@@ -253,6 +257,15 @@ export default {
                     children:[
                         {id:2001,name:'虚战力查询',pid:2000,path:'/xucombat/queryCombat'},
                         {id:2002,name:'战力模拟器',pid:2000,path:'/xucombat/imitate'},
+                    ]
+                },
+                {
+                    id:3000,
+                    name:'活动',
+                    pid:0,
+                    icon:'zwicon-shape-circle',
+                    children:[
+                        {id:2001,name:'活动日历',pid:3000,path:'/activity/calendar'},
                     ]
                 },
             ]

@@ -9,7 +9,7 @@ let source = axios.CancelToken.source()
 // 创建axios实例
 const instance = axios.create({
   // baseURL: process.env.API_HOST, // api的base_url
-  baseURL: 'http://localhost:8080/',
+  baseURL: 'http://yvpsms.natappfree.cc/',
   withCredentials: true,
   timeout: 1000000, // 请求超时时间
   // headers: {

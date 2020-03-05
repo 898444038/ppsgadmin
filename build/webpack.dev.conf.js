@@ -95,7 +95,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new VueLoaderPlugin(),
     new webpack.ProvidePlugin({
       $:'jquery',
-      jQuery:'jquery'
+      jQuery:'jquery',
+      jquery:'jquery',
+      "window.jQuery":'jquery',
     })
   ]
 })

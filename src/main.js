@@ -11,6 +11,7 @@ import store from './vuex/index'
 
 import api from './api/index'
 import request from './api/api'
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
