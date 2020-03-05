@@ -22,7 +22,6 @@
                 <div class="form-group">
                     <input type="text" id="username" name="username" class="form-control text-center" value="wang" placeholder="Email Address">
                 </div>
-
                 <div class="form-group">
                     <input type="password" id="password" name="password" class="form-control text-center" value="123456" placeholder="Password">
                 </div>
@@ -162,7 +161,7 @@ export default {
         // s.type = 'text/javascript'
         // s.src = '../../../static/formwork/js/app.min.js'
         // document.body.appendChild(s)
-
+        
     },
     beforeUpdate: function () {
         console.group('beforeUpdate 更新前状态===============》');

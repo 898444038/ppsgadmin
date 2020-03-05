@@ -12,6 +12,9 @@ import store from './vuex/index'
 import api from './api/index'
 import request from './api/api'
 
+import excel from './components/js/excel'
+Vue.use(excel)
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

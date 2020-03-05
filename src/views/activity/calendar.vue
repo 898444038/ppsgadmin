@@ -17,7 +17,7 @@
                     <!--工具栏-->
                     <!-- <div id="x-spreadsheet-demo"></div> -->
                     <!--工具栏-->
-                    <div class="toolbars">
+                    <div class="toolbars" style="    background-color: #fff;">
                         <div class="group font">
                             <div class="body">
                                 <div class="sub sub-top">
@@ -158,7 +158,7 @@
                     <div style="width: 100%;display: flex;">
                         <input type="text" id="selectTdValue" style="width: 100%;outline:none;">
                     </div>
-                    <div class="excel" onselectstart="return false">
+                    <div class="excel" onselectstart="return false" style="heigth:500px;background: #fff;">
                     </div>
 
                     <!--设计后获取表格的代码-->
@@ -196,7 +196,7 @@ export default {
     },
     methods: {
         excel(){
-            this.$excel.Excel(
+            $(".excel").Excel(
                 {setting: {row: 50, col: 35}}
             );
         },

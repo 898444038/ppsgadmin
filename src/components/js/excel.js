@@ -1,6 +1,7 @@
-let $ = require('./jquery-2.0.3')
+let $ = require('jquery')
+// import $ from 'jquery'
 
-if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
+if (typeof jQuery !== "undefined") {
     (function ($) {
             //单击选中的单元格
             let selectTd;
