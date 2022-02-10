@@ -85,7 +85,7 @@
     "webpack-dev-server": "^3.9.0",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^4.1.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.1.0"
   },
   "engines": {
